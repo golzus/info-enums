@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Enums</h1>
-
+<input placeholder="הכנס טקסט לחיפוש"/>
     <pre>
 <code id="code-block">
         {
@@ -742,44 +742,59 @@
 </pre>
       
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const codeBlock = document.getElementById("code-block");
-        const lines = codeBlock.innerText.split("\n"); // מחלק את הקוד לשורות
-        codeBlock.innerHTML = ""; // מנקה את ה-<pre> כדי להוסיף כל שורה בנפרד
+  document.addEventListener("DOMContentLoaded", function () {
+    const codeBlock = document.getElementById("code-block");
+    const lines = codeBlock.innerText.split("\n"); // מחלק את הקוד לשורות
+    codeBlock.innerHTML = ""; // מנקה את ה-<pre> כדי להוסיף כל שורה בנפרד
 
-        lines.forEach(line => {
-            if (line.trim() === "" || line.trim() === "{" || line.trim() === "}" || line.trim().endsWith("{") || line.trim().endsWith("}")) return; // מדלג על שורות ריקות או סוגרים
-                if(!line.includes('=')&&!line.includes('int')&&!line.includes('string')){
-                    const lineHeader = document.createElement("div");
-                    const span = document.createElement("span");
-                    span.innerText = line;
-                    lineHeader.appendChild(span);
-                    lineHeader.classList.add("code-line-header");
-                    codeBlock.appendChild(lineHeader);
-                    return;
-                }
-            const lineContainer = document.createElement("div");
-            const button = document.createElement("button");
-            button.innerHTML = 'copy';
-            lineContainer.classList.add("code-line");
-
+    const lineElements = lines.map(line => {
+        if (line.trim() === "" || line.trim() === "{" || line.trim() === "}" || line.trim().endsWith("{") || line.trim().endsWith("}")) return null; // מדלג על שורות ריקות או סוגרים
+        if (!line.includes('=') && !line.includes('int') && !line.includes('string')) {
+            const lineHeader = document.createElement("div");
             const span = document.createElement("span");
             span.innerText = line;
-            button.classList.add("copy-line-btn");
+            lineHeader.appendChild(span);
+            lineHeader.classList.add("code-line-header");
+            codeBlock.appendChild(lineHeader);
+            return lineHeader;
+        }
+        const lineContainer = document.createElement("div");
+        const button = document.createElement("button");
+        button.innerHTML = 'copy';
+        lineContainer.classList.add("code-line");
 
-            button.onclick = function () {
-                navigator.clipboard.writeText(line.trim()).then(() => {
-                  button.innerHTML = "copied ✔";
-                  setTimeout(() => {
-                        button.innerHTML = "copy";
-                    }, 2000);
-                });
-            };
-            lineContainer.appendChild(button);
-            lineContainer.appendChild(span);
-            codeBlock.appendChild(lineContainer);
+        const span = document.createElement("span");
+        span.innerText = line;
+        button.classList.add("copy-line-btn");
+
+        button.onclick = function () {
+            navigator.clipboard.writeText(line.trim()).then(() => {
+                button.innerHTML = "copied ✔";
+                setTimeout(() => {
+                    button.innerHTML = "copy";
+                }, 2000);
+            });
+        };
+        lineContainer.appendChild(button);
+        lineContainer.appendChild(span);
+        codeBlock.appendChild(lineContainer);
+        return lineContainer;
+    }).filter(el => el !== null);
+
+    const searchInput = document.querySelector("input[placeholder='הכנס טקסט לחיפוש']");
+    searchInput.addEventListener("input", function () {
+        const searchText = searchInput.value.toLowerCase();
+        lineElements.forEach(lineElement => {
+            const lineText = lineElement.innerText.toLowerCase();
+            if (lineText.includes(searchText)) {
+                lineElement.style.display = "";
+            } else {
+                lineElement.style.display = "none";
+            }
         });
     });
+});        const codeBlock = document.getElementById("code-block");
+     
 </script>
 
 </body>
