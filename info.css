@@ -35,3 +35,10 @@ pre {
     border-bottom: solid 1px #ccc;
 }
 
+input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #085c6e;
+    color: white;
+}
