@@ -769,9 +769,8 @@
 
             button.onclick = function () {
                 navigator.clipboard.writeText(line.trim()).then(() => {
-                    successMsg.style.display = "inline"; // מציג את ההודעה
-                    button.innerHTML = "✔";
-                    setTimeout(() => {
+                  button.innerHTML = "copied ✔";
+                  setTimeout(() => {
                         button.innerHTML = "copy";
                     }, 2000);
                 });
