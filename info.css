@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 20px;
+    padding: 20px;
+}
+
+h1 {
+    color: #085c6e;
+    border-bottom: 2px solid  #085c6e;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+pre {
+    background-color: #085c6e;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+}
+.code-line-header{
+    font-weight: bold;
+    color: #f8f8f2;
+    background-color: #282a36;
+    padding: 5px;
+}
+.code-line{
+    padding: 5px;
+    border-bottom: solid 1px #ccc;
+}
+

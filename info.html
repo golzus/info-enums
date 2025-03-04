@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="info.css">
+    <title>info-enums</title>
+</head>
+<body>
+    <h1>Enums</h1>
+
+    <pre>
+<code id="code-block">
+        {
+            Unspecified = 0,
+            BusinessPerson = 1,   //e.g, business owner, employees
+            EventOwnerPerson = 2,     //e.g, contact person
+            ProviderPerson = 3,
+            //Guest = 4,
+
+            AccountantPerson = 14,
+            OperationPerson = 15,     //2
+            //PromotionManager = 16,
+            ContentManager = 17,      //7
+            Administrator = 18,      //8
+            //TechAdministrator = 19,
+        }
+
+
+         BusinessTypes
+        {
+            Unspecified = 0,
+
+            //Halls = 1,    //אולם אירועים
+            //Conferences = 2,    //הרצאות(כנסים)
+            //Productions = 3,    //הפקות
+            //Catering = 4,    //קייטרינג
+            //Freelancer = 5,    //מפעיל: ליצן, מפעיל ילדים וכו'
+        }
+
+
+
+
+
+        AppModules
+        {
+            Unspecified = 0,
+            //Order = 1,    //Events
+            //Operation = 2,    //Events
+            //Leads = 3,     //CRM
+            Activity = 4,     //CRM
+            //Accounting = 5,     //CRM
+            //Communication = 6,     //CRM
+            Schedule = 7,     //CRM
+            //Payments = 8,     //CRM
+            Tasks = 9,     //CRM
+            //Marketing = 10,
+            //Maintenance = 11,
+            //Reports = 12,     //CRM
+            //Subscription = 13,     //CRM
+            //Signing = 14,
+            //Inventory = 15,
+
+            Account = 16,
+            Cache = 17,
+            File = 18,
+            General = 19,
+
+            Administrator = 20,
+        }
+
+
+
+
+
+        PaylinkDevices
+        {
+            Unspecified = 0,
+            Dispenser = 1,    //F53
+            Acceptor = 2,    //Gryphon
+            CoinDispenser = 3,    //SCR (EBDS);  also accepts coins
+            FaceCamera = 4,    //Id Camera
+            NFCDevice = 5,
+            Printer = 6,
+            QRCamera = 7,
+            StatusLED = 8,
+        }
+
+
+
+
+
+
+        LaorOfficeSystemPaymentMethods
+        {
+            Unspecified = 0,
+            CreditCard = 1,    //סליקה
+            //CreditCardSelf = 1,    //סליקה
+            //CreditCardClient = 1,    //סליקה
+            BIT = 2,
+            Paybox = 3,
+            PayPal = 4,
+
+            Deffered = 5
+        }
+
+
+
+
+
+
+         Gender
+        {
+            Unspecified = 0,
+            Male = 1,
+            Female = 2,
+        }
+
+         CalendarEventTypes
+        {
+            Unspecified = 0,
+            BusinessEvent = 1,
+            Call = 2,
+            Meeting = 3,
+            FrontalMeeting = 4,
+            RemoteMeeting = 5,
+            Holiday = 6,
+            SpecialDay = 7,
+            Notification = 8,
+            DayOff = 9,
+            Note = 10,
+        }
+
+
+
+        EventComponentPayMode
+        {
+            Unspecified = 0,
+            Fixed = 1,
+            PerPerson = 2,
+            Options = 3,
+        }
+
+
+         VATTypes
+        {
+            Unspecified = 0,
+            VATIncluded = 1,
+            VATNotIncluded = 2,
+            NoVAT = 3,
+            IgnoreVAT = 4,
+
+            Unknown = 99999
+        }
+
+
+        OrderStatuses    //lead statuses
+        {
+            Unspecified = 0,
+
+        }
+
+
+
+        CommunicationChannels
+        {
+            Unspecified = 0,
+            SMS = 1,
+            Whatsapp = 2,
+            Email = 3,
+            Telegram = 4,
+            Chat = 9
+        }
+
+
+       SafeCardSystemActionResultCodes
+        {
+            //Unspecified = 0,
+            Success = 0, //no error
+
+            GeneralError = 99999
+        }
+        public class DispenserBlock
+        {
+          public int Unit;
+          public int Status;
+          public int InterfaceNumber;
+          public int UnitAddress;
+          public int Value;
+          public int Count;
+          public int Inhibit;
+          public int NotesToDump;
+          public int CoinCount;
+          public int CoinCountStatus;
+          public int SerialNumber;
+          public string Description;
+        }
+        public class AcceptorCoin
+  {
+    public int Value;
+    public int Inhibit;
+    public int Count;
+    public int Path;
+    public int PathCount;
+    public int PathSwitchLevel;
+    public byte DefaultPath;
+    public byte FutureExpansion;
+    public byte HeldInEscrow;
+    public byte FutureExpansion2;
+    public string CoinName;
+  }
+
+  public class AcceptorBlock
+  {
+    public int Unit;
+    public int Status;
+    public int NoOfCoins;
+    public int InterfaceNumber;
+    public int UnitAddress;
+    public int DefaultPath;
+    public int Unused;
+    public int BarcodesStacked;
+    public string Currency;
+    public AESImhei.AcceptorCoin[] Coin;
+    public int SerialNumber;
+    public string Description;
+    public int EscrowBarcodeHere;
+
+    public AcceptorBlock()
+    
+      this.Coin = new AESImhei.AcceptorCoin[256];
+      int index = 0;
+    
+
+  public class DispenserBlock
+  {
+    public int Unit;
+    public int Status;
+    public int InterfaceNumber;
+    public int UnitAddress;
+    public int Value;
+    public int Count;
+    public int Inhibit;
+    public int NotesToDump;
+    public int CoinCount;
+    public int CoinCountStatus;
+    public int SerialNumber;
+    public string Description;
+  }
+
+  public class LoggedEventBlock
+  {
+    public int EventTime;
+    public int EventType;
+    public int EventNumber;
+    public int Information;
+  }
+
+  public class EventDetailBlock
+  {
+    public int EventCode;
+    public int RawEvent;
+    public int DispenserEvent;
+    public int Index;
+  }
+
+  public class TicketDescription
+  {
+    public int TicketType;
+    public string BarcodeData;
+    public string AmountInWords;
+    public string AmountAsNumber;
+    public string MachineIdentity;
+    public string DatePrinted;
+    public string TimePrinted;
+  }
+
+  public class EscrowNoteDetails
+  {
+    public int Value;
+    public int NoteNumber;
+    public int Location;
+    public int Status;
+  }
+
+  public class EscrowControlBlock
+  {
+    public int EscrowVersion;
+    public int State;
+    public int Result;
+    public int TotalValue;
+    public int ValueReturned;
+    public int AcceptorNo;
+    public int NoInEscrow;
+    public AESImhei.EscrowNoteDetails[] EscrowNote;
+
+    public EscrowControlBlock()
+    {
+      this.EscrowNote = new AESImhei.EscrowNoteDetails[64];
+      int index = 0;
+      {
+        this.EscrowNote[index] = new AESImhei.EscrowNoteDetails();
+    
+    }
+  }
+
+  public class CashlessControlBlock
+  {
+    public int CashlessType;
+    public string Description;
+    public int SerialNumber;
+    public int TotalAcquisitions;
+    public int TotalCredit;
+    public int CurrentState;
+    public int StateDetails;
+    public int CreditValue;
+    public string ReferenceData;
+    public int TotalPaid;
+    public int MaximumPay;
+    public int Spare1;
+    public int Spare2;
+  }
+
+  public class InterfaceDevice
+  {
+    public int DeviceType;
+    public int CurrentStatus;
+    public int NoOfInputs;
+    public int NoOfLoggedInputs;
+    public int NoOfOutputs;
+    public int PWMCapable;
+    public int BatteryPerCent;}
+
+    public class AESImhei
+{
+  public const int SYSTEM_MASK = -268435456;
+  public const int INTERFACE_FAILED = -2147483648;
+  public const int DISPENSER_MASK = 268369920;
+  public const int ACCEPTOR_MASK = 65535;
+  public const int ACCEPTOR_DEAD = 1;
+  public const int ACCEPTOR_DISABLED = 4;
+  public const int ACCEPTOR_INHIBIT = 8;
+  public const int ACCEPTOR_FRAUD = 16;
+  public const int ACCEPTOR_BUSY = 32;
+  public const int ACCEPTOR_FAULT = 64;
+  public const int ACCEPTOR_NO_KEY = 128;
+  public const int MAX_ACCEPTOR_COINS = 256;
+  public const int MAX_DISPENSERS = 16;
+  public const int DISPENSER_COIN_NONE = 0;
+  public const int DISPENSER_COIN_LOW = 1;
+  public const int DISPENSER_COIN_MID = 2;
+  public const int DISPENSER_COIN_HIGH = 3;
+  public const int DISPENSER_ACCURATE = -1;
+  public const int DISPENSER_ACCURATE_FULL = -2;
+  public const int DISPENSER_REASSIGN_VALUE = 100;
+  public const int DISPENSER_VALUE_REASSIGNED = 101;
+  public const int DISPENSER_UPDATE_COUNT = 110;
+  public const int DISPENSER_COUNT_UPDATED = 111;
+  public const int DISPENSER_CASHBOX_DUMP = 120;
+  public const int DISPENSER_PARTIAL_DUMP = 121;
+  public const int DISPENSER_DUMP_FINISHED = 122;
+  public const int DISPENSER_RESET_STATUS = 200;
+  public const int DP_GENERIC_MASK = -16777216;
+  public const int DP_COIN_ACCEPT_DEVICE = 33554432;
+  public const int DP_NOTE_ACCEPT_DEVICE = 301989888;
+  public const int DP_CARD_ACCEPT_DEVICE = 570425344;
+  public const int DP_COIN_PAYOUT_DEVICE = 16777216;
+  public const int DP_NOTE_PAYOUT_DEVICE = 285212672;
+  public const int DP_CARD_PAYOUT_DEVICE = 553648128;
+  public const int DP_INTERFACE_MASK = 16711680;
+  public const int DP_INTERFACE_UNIT = 0;
+  public const int DP_ONBOARD_PARALLEL_INTERFACE = 65536;
+  public const int DP_CCTALK_INTERFACE = 131072;
+  public const int DP_SSP_INTERFACE = 196608;
+  public const int DP_HII_INTERFACE = 262144;
+  public const int DP_ARDAC_INTERFACE = 327680;
+  public const int DP_JCM_INTERFACE = 393216;
+  public const int DP_GPT_INTERFACE = 458752;
+  public const int DP_MDB_INTERFACE = 524288;
+  public const int DP_MDB_LEVEL_3_INTERFACE = 524288;
+  public const int DP_MDB_LEVEL_2_INTERFACE = 589824;
+  public const int DP_F56_INTERFACE = 655360;
+  public const int DP_CCNET_INTERFACE = 720896;
+  public const int DP_TFLEX_INTERFACE = 786432;
+  public const int DP_EBDS_INTERFACE = 851968;
+  public const int DP_DLL_INTERFACE = 917504;
+  public const int DP_CLS_INTERFACE = 983040;
+  public const int DP_ID003_NOTE = 302383104;
+  public const int DP_ID003_RECYCLER = 302383106;
+  public const int DP_ID003_BOX = 285605890;
+  public const int DP_MDB_LEVEL_2 = 34144256;
+  public const int DP_MDB_LEVEL_3 = 34078720;
+  public const int DP_MDB_LEVEL_2_TUBE = 17367040;
+  public const int DP_MDB_TYPE_3_PAYOUT = 17301504;
+  public const int DP_MDB_BILL = 302514176;
+  public const int DP_MDB_DISPENSER = 285736961;
+  public const int DP_CC_GHOST_HOPPER = 16908543;
+  public const int DP_MANUFACTURER_MASK = 65280;
+  public const int DP_MANU_UNKNOWN = 0;
+  public const int DP_MANU_MONEY_CONTROLS = 256;
+  public const int DP_MANU_INNOVATIVE_TECH = 512;
+  public const int DP_MANU_MARS_ELECTRONICS = 768;
+  public const int DP_MANU_AZKOYEN = 1024;
+  public const int DP_MANU_NRI = 1280;
+  public const int DP_MANU_ICT = 1536;
+  public const int DP_MANU_JCM = 1792;
+  public const int DP_MANU_GPT = 2048;
+  public const int DP_MANU_COINCO = 2304;
+  public const int DP_MANU_ASAHI_SEIKO = 2560;
+  public const int DP_MANU_ASTROSYSTEMS = 2816;
+  public const int DP_MANU_MERKUR = 3072;
+  public const int DP_MANU_FUJITSU = 3328;
+  public const int DP_MANU_CASHCODE = 3584;
+  public const int DP_MANU_MFS = 3840;
+  public const int DP_MANU_TELEQUIP = 4096;
+  public const int DP_MANU_AES = 4352;
+  public const int DP_SPECIFIC_DEVICE_MASK = 255;
+  public const int DP_MCL_SCH2 = 16908545;
+  public const int DP_MCL_SUH1 = 16908546;
+  public const int DP_MCL_SCH3A = 16908547;
+  public const int DP_MCL_SCH3 = 16908548;
+  public const int DP_MCL_SUH5 = 16908549;
+  public const int DP_MCL_SCH5 = 16908550;
+  public const int DP_MCL_BCR_HOPPER = 16908551;
+  public const int DP_MCL_CR100_HOPPER = 16908552;
+  public const int DP_MCL_NR2_HOPPER = 16908554;
+  public const int DP_MCL_SR3 = 33685762;
+  public const int DP_MCL_SR5 = 33685763;
+  public const int DP_MCL_CONDOR = 33685766;
+  public const int DP_MCL_BCR = 33685767;
+  public const int DP_MCL_CR100 = 33685768;
+  public const int DP_MCL_BCS = 33685769;
+  public const int DP_MCL_NR2 = 33685770;
+  public const int DP_MCL_LUMINA = 302121221;
+  public const int DP_MCL_7200 = 302121222;
+  public const int DP_MCL_ARDAC_ELITE = 302121223;
+  public const int DP_MCL_WACS = 302317825;
+  public const int DP_MCL_ARDAC = 302383361;
+  public const int DP_COINCO_MDB = 34081024;
+  public const int DP_COINCO_VORTEX = 34081025;
+  public const int DP_COINCO_GLOBAL = 34081026;
+  public const int DP_COINCO_MDB_BILL = 302516480;
+  public const int DP_COINCO_BILLPRO = 302516481;
+  public const int DP_AZK_HOPPER = 16909312;
+  public const int DP_AZK_HOPPER_U = 16909313;
+  public const int DP_AZK_HOPPER_UPL = 16909314;
+  public const int DP_AZK_MDB = 34079744;
+  public const int DP_AZK_A6 = 33686528;
+  public const int DP_AZK_X6 = 33686529;
+  public const int DP_MARS_CASHFLOW_126 = 33817345;
+  public const int DP_MARS_CASHFLOW_9500 = 33817346;
+  public const int DP_MARS_MDB = 34079488;
+  public const int DP_MARS_CASHFLOW_690 = 34079489;
+  public const int DP_INNOV_NV4 = 302121476;
+  public const int DP_INNOV_NV7 = 302121479;
+  public const int DP_INNOV_NV8 = 302121480;
+  public const int DP_INNOV_NV9 = 302121481;
+  public const int DP_INNOV_NV10 = 302121482;
+  public const int DP_INNOV_NV200 = 302121483;
+  public const int DP_SHOPPER_ACCEPT = 33686028;
+  public const int DP_INNOV_NV200_NOTE = 285344257;
+  public const int DP_INNOV_NV11 = 302121474;
+  public const int DP_INNOV_NV11_RC = 285344258;
+  public const int DP_SHOPPER_TOTAL = 16908803;
+  public const int DP_SHOPPER = 16908804;
+  public const int DP_SSP_NOTE = 302187009;
+  public const int DP_SSP_RECYCLER = 302187010;
+  public const int DP_TFLEX_TUBE = 17567745;
+  public const int DP_CX25_TUBE = 17567746;
+  public const int DP_CLS = 33558529;
+  public const int DP_CLS_HOPPER = 17764353;
+  public const int DP_MEIBNR = 302908161;
+  public const int DP_EBDS_NOTE = 302842625;
+  public const int DP_EBDS_RECYCLER = 302842626;
+  public const int DP_EBDS_ROLL = 286065409;
+  public const int DP_EBDS_BOX = 286065409;
+  public const int DP_MARS_SC_ADVANCE = 302842627;
+  public const int DP_MARS_SCR_ADVANCE = 302842628;
+  public const int DP_MEIBNR_RECYCLER = 286130945;
+  public const int DP_MEIBNR_LOADER = 286130946;
+  public const int DP_NRI_G40 = 33686785;
+  public const int DP_NRI_PELICANO = 33686786;
+  public const int DP_NRI_EAGLE = 33686787;
+  public const int DP_NRI_CURRENZA_H2 = 16909569;
+  public const int DP_ICT_U85 = 302122497;
+  public const int DP_ICT_BR2300 = 302122498;
+  public const int DP_ICT_BR2300_RC = 285345282;
+  public const int DP_AST_GBA = 302123777;
+  public const int DP_JCM_CC_EBA = 302122752;
+  public const int DP_JCM_CC_WBA = 302122753;
+  public const int DP_JCM_VEGA = 302122754;
+  public const int DP_JCM_VEGA_RC = 285345538;
+  public const int DP_JCM_NOTE = 302384896;
+  public const int DP_GPT_NOTE = 302450688;
+  public const int DP_AS_WH2 = 16910848;
+  public const int DP_MERKUR_100 = 302124033;
+  public const int DP_MERKUR_100_PAY = 285346817;
+  public const int DP_FUJITSU_F56 = 285871366;
+  public const int DP_FUJITSU_F53 = 285871363;
+  public const int DP_FUJITSU_F400 = 285871364;
+  public const int DP_CDM_4000 = 285871873;
+  public const int DP_CC_RECYCLER = 302714369;
+  public const int DP_CC_ACCEPTOR = 302714370;
+  public const int DP_CC_CASSETTE = 285937153;
+  public const int DP_CASHLESS_HUB = 16912641;
+  public const int PAY_ONGOING = 0;
+  public const int PAY_FINISHED = 1;
+  public const int PAY_EMPTY = -1;
+  public const int PAY_JAMMED = -2;
+  public const int PAY_US = -3;
+  public const int PAY_FRAUD = -4;
+  public const int PAY_FAILED_BLOCKED = -5;
+  public const int PAY_NO_HOPPER = -6;
+  public const int PAY_INHIBITED = -7;
+  public const int PAY_SECURITY_FAIL = -8;
+  public const int PAY_HOPPER_RESET = -9;
+  public const int PAY_NOT_EXACT = -10;
+  public const int PAY_GHOST = -11;
+  public const int PAY_NO_KEY = -12;
+  public const int EVT_POWER_ON = 0;
+  public const int EVT_POWER_OFF = 1;
+  public const int EVT_QUEUE_OVERFLOW = 2;
+  public const int EVT_QUEUE_RECOVERED = 3;
+  public const int EVT_SYSTEM_RESET = 4;
+  public const int EVT_SWITCH_OPEN = 5;
+  public const int EVT_SWITCH_CLOSED = 6;
+  public const int EVT_SYSTEM_INIT = 7;
+  public const int EVT_NULL = 8;
+  public const int DES_UNLOCKED = 0;
+  public const int DES_MATCH = 1;
+  public const int DES_NOT = -1;
+  public const int DES_WRONG = -2;
+  public const int DES_CHECKING = -3;
+  public const int DES_APPLYING = -4;
+  public const int EVENT_CODE_MASK = 63;
+  public const int UNIT_TYPE_MASK = -64;
+  public const int FAULT_BIT = 32;
+  public const int COIN_DISPENSER_EVENT = 64;
+  public const int NOTE_DISPENSER_EVENT = 128;
+  public const int COIN_EVENT = 192;
+  public const int NOTE_EVENT = 256;
+  public const int EVENT_OK = 0;
+  public const int EVENT_BUSY = 1;
+  public const int REJECTED = 2;
+  public const int INHIBITED = 3;
+  public const int MISREAD = 4;
+  public const int FRAUD = 5;
+  public const int JAM = 6;
+  public const int JAM_FIXED = 7;
+  public const int RETURN = 8;
+  public const int OUTPUT_PROBLEM = 9;
+  public const int OUTPUT_FIXED = 10;
+  public const int INTERNAL_PROBLEM = 11;
+  public const int UNKNOWN = 12;
+  public const int DISPENSE_UPDATE = 13;
+  public const int UNRECOGNISED = 14;
+  public const int DISPENSE_PENDING = 15;
+  public const int INPUT_STOPPED = 16;
+  public const int INPUT_STARTED = 17;
+  public const int NOW_OK = 0;
+  public const int REPORTED_FAULT = 1;
+  public const int UNIT_TIMEOUT = 2;
+  public const int UNIT_RESET = 3;
+  public const int SELF_TEST_REFUSED = 4;
+  public const int IMHEI_NULL = 0;
+  public const int IMHEI_INTERFACE_START = 1;
+  public const int IMHEI_APPLICATION_START = 2;
+  public const int IMHEI_APPLICATION_EXIT = 3;
+  public const int IMHEI_OVERFLOW = 31;
+  public const int IMHEI_COIN_NOW_OK = 224;
+  public const int IMHEI_COIN_UNIT_REPORTED_FAULT = 225;
+  public const int IMHEI_COIN_UNIT_TIMEOUT = 226;
+  public const int IMHEI_COIN_UNIT_RESET = 227;
+  public const int IMHEI_COIN_SELF_TEST_REFUSED = 228;
+  public const int IMHEI_COIN_REJECT_COIN = 194;
+  public const int IMHEI_COIN_INHIBITED_COIN = 195;
+  public const int IMHEI_COIN_FRAUD_ATTEMPT = 197;
+  public const int IMHEI_COIN_ACCEPTOR_JAM = 198;
+  public const int IMHEI_COIN_COIN_RETURN = 200;
+  public const int IMHEI_COIN_SORTER_JAM = 201;
+  public const int IMHEI_COIN_SORTER_FIXED = 202;
+  public const int IMHEI_COIN_INTERNAL_PROBLEM = 203;
+  public const int IMHEI_COIN_UNRECOGNISED = 206;
+  public const int IMHEI_COIN_UNCLASSIFIED_EVENT = 204;
+  public const int IMHEI_COIN_INPUT_STOPPED = 208;
+  public const int IMHEI_COIN_INPUT_STARTED = 209;
+  public const int IMHEI_NOTE_NOW_OK = 288;
+  public const int IMHEI_NOTE_UNIT_REPORTED_FAULT = 289;
+  public const int IMHEI_NOTE_UNIT_TIMEOUT = 290;
+  public const int IMHEI_NOTE_UNIT_RESET = 291;
+  public const int IMHEI_NOTE_SELF_TEST_REFUSED = 292;
+  public const int IMHEI_NOTE_REJECT_NOTE = 258;
+  public const int IMHEI_NOTE_INHIBITED_NOTE = 259;
+  public const int IMHEI_NOTE_NOTE_MISREAD = 260;
+  public const int IMHEI_NOTE_FRAUD_ATTEMPT = 261;
+  public const int IMHEI_NOTE_ACCEPTOR_JAM = 262;
+  public const int IMHEI_NOTE_ACCEPTOR_JAM_FIXED = 263;
+  public const int IMHEI_NOTE_NOTE_RETURNED = 264;
+  public const int IMHEI_NOTE_STACKER_PROBLEM = 265;
+  public const int IMHEI_NOTE_STACKER_FIXED = 266;
+  public const int IMHEI_NOTE_INTERNAL_ERROR = 267;
+  public const int IMHEI_NOTE_UNCLASSIFIED_EVENT = 268;
+  public const int IMHEI_NOTE_INPUT_STOPPED = 272;
+  public const int IMHEI_NOTE_INPUT_STARTED = 273;
+  public const int IMHEI_COIN_DISPENSER_NOW_OK = 96;
+  public const int IMHEI_COIN_DISPENSER_REPORTED_FAULT = 97;
+  public const int IMHEI_COIN_DISPENSER_TIMEOUT = 98;
+  public const int IMHEI_COIN_DISPENSER_RESET = 99;
+  public const int IMHEI_COIN_DISPENSER_SELF_TEST_REFUSED = 100;
+  public const int IMHEI_COIN_DISPENSER_FRAUD_ATTEMPT = 69;
+  public const int IMHEI_COIN_DISPENSER_UPDATE = 77;
+  public const int IMHEI_NOTE_DISPENSER_NOW_OK = 160;
+  public const int IMHEI_NOTE_DISPENSER_REPORTED_FAULT = 161;
+  public const int IMHEI_NOTE_DISPENSER_TIMEOUT = 162;
+  public const int IMHEI_NOTE_DISPENSER_RESET = 163;
+  public const int IMHEI_NOTE_DISPENSER_SELF_TEST_REFUSED = 164;
+  public const int IMHEI_NOTE_DISPENSER_FRAUD_ATTEMPT = 133;
+  public const int IMHEI_NOTE_DISPENSER_UNRECOGNISED = 142;
+  public const int IMHEI_NOTE_DISPENSER_MISREAD = 132;
+  public const int IMHEI_NOTE_DISPENSER_UPDATE = 141;
+  public const int IMHEI_NOTE_DISPENSER_REJECTED = 130;
+  public const int IMHEI_NOTE_DISPENSER_PENDING = 143;
+  public const int IMHEI_NOTE_DISPENSER_PROBLEM = 137;
+  public const int IMHEI_NOTE_DISPENSER_FIXED = 138;
+  public const int PRINTER_NONE = 0;
+  public const int PRINTER_FAULT = -2147483648;
+  public const int PRINTER_IDLE = 1;
+  public const int PRINTER_BUSY = 2;
+  public const int PRINTER_PLATEN_UP = 4;
+  public const int PRINTER_PAPER_OUT = 8;
+  public const int PRINTER_HEAD_FAULT = 16;
+  public const int PRINTER_VOLT_FAULT = 64;
+  public const int PRINTER_TEMP_FAULT = 128;
+  public const int PRINTER_INTERNAL_ERROR = 256;
+  public const int PRINTER_PAPER_IN_CHUTE = 512;
+  public const int PRINTER_OFFLINE = 1024;
+  public const int PRINTER_MISSING_SUPPY_INDEX = 2048;
+  public const int PRINTER_CUTTER_FAULT = 4096;
+  public const int PRINTER_PAPER_JAM = 8192;
+  public const int PRINTER_PAPER_LOW = 16384;
+  public const int PRINTER_OPEN = 32768;
+  public const int PRINTER_TOP_OF_FORM = 65536;
+  public const int PRINTER_BARCODE_DONE = 131072;
+  public const int PRINTER_JUST_RESET = 262144;
+  public const int METER_OK = 0;
+  public const int METER_MISSING = 1;
+  public const int METER_DIED = 2;
+  public const int METER_FAILED = 3;
+  public const int METER_STARTUP = 4;
+  public const int MAX_ESCROW = 64;
+  public const int ESCROW_CURRENT_VERSION = 0;
+  public const int ESCROW_NOTE_HELD = 0;
+  public const int ESCROW_NOTE_STACKED = 1;
+  public const int ESCROW_NOTE_RETURNED = 2;
+  public const int ESCROW_NOTE_PROBLEM = 3;
+  public const int EXT_ESCROW_NONE = 0;
+  public const int EXT_ESCROW_OFF = 1;
+  public const int EXT_ESCROW_IDLE = 2;
+  public const int EXT_ESCROW_WAITING = 3;
+  public const int EXT_ESCROW_LOADING = 4;
+  public const int EXT_ESCROW_STORED = 5;
+  public const int EXT_ESCROW_PAUSED = 6;
+  public const int EXT_ESCROW_STACKING = 7;
+  public const int EXT_ESCROW_RETURNING = 8;
+  public const int EXT_ESCROW_RETURNED_OK = 9;
+  public const int EXT_ESCROW_RETURNING_PROBLEM = 10;
+  public const int EXT_ESCROW_STACKED_OK = 11;
+  public const int EXT_ESCROW_STACKING_PROBLEM = 12;
+  public const int EXT_ESCROW_FULL = 13;
+  public const int EXT_ESCROW_POWER_ACTIVE = 14;
+  public const int EXT_ESCROW_COMPLETE = 0;
+  public const int EXT_ESCROW_BUSY = 1;
+  public const int EXT_ESCROW_WRONGSTATE = 2;
+  public const int EXT_ESCROW_ERROR = 3;
+  public const int EXT_ESCROW_START = 0;
+  public const int EXT_ESCROW_STOP = 1;
+  public const int EXT_ESCROW_ACCEPT = 2;
+  public const int EXT_ESCROW_PAUSE = 3;
+  public const int EXT_ESCROW_STACK = 4;
+  public const int EXT_ESCROW_RETURN = 5;
+  public const int CR_CREDIT_CARD = 0;
+  public const int CR_TICKET = 1;
+  public const int CR_ONLINE_WALLET = 2;
+  public const int CR_NO_UNIT = 0;
+  public const int CR_BUSY = 1;
+  public const int CR_DISABLED = 2;
+  public const int CR_IDLE = 3;
+  public const int CR_FAULT_DISABLED = 4;
+  public const int CR_FAULT_IDLE = 5;
+  public const int CR_AVAILABLE_IDLE = 6;
+  public const int CR_INVALID_OP = 100;
+  public const int CR_AVAILABLE = 11;
+  public const int CR_CONFIRMED = 12;
+  public const int CR_TAKEN = 13;
+  public const int CR_REFUSED = 14;
+  public const int CR_CANCELLED = 15;
+  public const int CR_FAILED = 16;
+  public const int CR_FAILED_TAKEN = 17;
+  public const int CR_INVALID_REF = 101;
+  public const int CR_TRANSFERRING = 21;
+  public const int CR_TRANSFERED = 22;
+  public const int CR_TRANSFER_FAIL = 23;
+  public const int CR_PAY_ACTIVE = 32768;
+  public const int INTERFACE_NO_DATA = -5;
+  public const int INTERFACE_TOO_LONG = -4;
+  public const int INTERFACE_NON_EXIST = -3;
+  public const int INTERFACE_OVERFLOW = -2;
+  public const int INTERFACE_TIMEOUT = -1;
+  public const int INTERFACE_BUSY = 0;
+  public const int INTERFACE_NONE = 0;
+  public const int INTERFACE_REV3 = 1;
+  public const int INTERFACE_REV4 = 2;
+  public const int INTERFACE_LITE = 3;
+  public const int INTERFACE_LITE2 = 4;
+  public const int INTERFACE_DONGLE = 5;
+  public const int INTERFACE_RS232 = 6;
+  public const int DEVICE_NO_DRIVER = 0;
+  public const int DEVICE_NEVER_SEEN = 1;
+  public const int DEVICE_GOOD = 2;
+  public const int DEVICE_INITALISING = 3;
+  public const int DEVICE_ERROR = 4;
+  public const int DEVICE_BUSY = 5;
+  public const int NOT_USB = -1;
+  public const int USB_IDLE = 0;
+  public const int STANDARD_DRIVER = 1;
+  public const int FLASH_LOADER = 2;
+  public const int MANUFACTURING_TEST = 3;
+  public const int DRIVER_RESTART = 4;
+  public const int USB_ERROR = 5;
+  public const int DRIVER_EXIT = 6;
+  public const int GENOA_UNKNOWN = 0;
+  public const int GENOA_H8 = 1;
+  public const int GENOA_RX_HID = 2;
+  public const int GENOA_RX_FTDI = 3;
+  public const int GENOA_LITE_2 = 4;
+  public const int GENOA_USB_ONLY = 5;
+  public const int GENOA_USB_MERGED = 6;
+  public const int STANDARD_COIN_TIME = 500;
+
+</code>
+</pre>
+      
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const codeBlock = document.getElementById("code-block");
+        const lines = codeBlock.innerText.split("\n"); // מחלק את הקוד לשורות
+        codeBlock.innerHTML = ""; // מנקה את ה-<pre> כדי להוסיף כל שורה בנפרד
+
+        lines.forEach(line => {
+            if (line.trim() === "" || line.trim() === "{" || line.trim() === "}" || line.trim().endsWith("{") || line.trim().endsWith("}")) return; // מדלג על שורות ריקות או סוגרים
+                if(!line.includes('=')&&!line.includes('int')&&!line.includes('string')){
+                    const lineHeader = document.createElement("div");
+                    const span = document.createElement("span");
+                    span.innerText = line;
+                    lineHeader.appendChild(span);
+                    lineHeader.classList.add("code-line-header");
+                    codeBlock.appendChild(lineHeader);
+                    return;
+                }
+            const lineContainer = document.createElement("div");
+            const button = document.createElement("button");
+            button.innerHTML = 'copy';
+            lineContainer.classList.add("code-line");
+
+            const span = document.createElement("span");
+            span.innerText = line;
+            button.classList.add("copy-line-btn");
+
+            button.onclick = function () {
+                navigator.clipboard.writeText(line.trim()).then(() => {
+                    successMsg.style.display = "inline"; // מציג את ההודעה
+                    button.innerHTML = "✔";
+                    setTimeout(() => {
+                        button.innerHTML = "copy";
+                    }, 2000);
+                });
+            };
+            lineContainer.appendChild(button);
+            lineContainer.appendChild(span);
+            codeBlock.appendChild(lineContainer);
+        });
+    });
+</script>
+
+</body>
+</html>
